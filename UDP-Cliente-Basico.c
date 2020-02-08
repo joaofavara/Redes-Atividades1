@@ -51,7 +51,7 @@ char **argv;
    scanf("%s", buf);
 
    /* Envia a mensagem no buffer para o servidor */
-   if (sendto(s, buf, (strlen(buf)), 0, (struct sockaddr *)&server, sizeof(server)) < 0) // why to use the +1 in the buf?
+   if (sendto(s, buf, (strlen(buf)+1), 0, (struct sockaddr *)&server, sizeof(server)) < 0) // why to use the +1 in the buf?
    {
        perror("sendto()");
        exit(2);
