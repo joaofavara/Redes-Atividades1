@@ -18,7 +18,7 @@ char **argv;
    int width = 5;
    unsigned short port;
    struct sockaddr_in server;
-   char buf[200];
+   char buf[201];
     /*
     exemple for 200 caracters: oiuytrewqazsdfvbhytrdswertghjhgfdserthjkoiuytrewertyuioiuytrsdfghjkjhgfdsdfghjkjvcxzxcvbnmnbvcxzawqertgvcdsertyhbvftyujmnbvgyjmnbgyuikmnbgtyhbvcxswerfxsawwqwertyuiugfddfghjhgxcvbnmmmmmmmmmmmmmmmmmmmmm
     */
@@ -48,10 +48,10 @@ char **argv;
    server.sin_addr.s_addr = inet_addr(argv[1]); /* Endere�o IP do servidor  */
 
    printf(">");
-   scanf("%s", buf);
+   scanf("%200s", buf);
 
    /* Envia a mensagem no buffer para o servidor */
-   if (sendto(s, buf, (strlen(buf)+1), 0, (struct sockaddr *)&server, sizeof(server)) < 0) // why to use the +1 in the buf?
+   if (sendto(s, buf, (strlen(buf)), 0, (struct sockaddr *)&server, sizeof(server)) < 0) // why to use the +1 in the buf?
    {
        perror("sendto()");
        exit(2);

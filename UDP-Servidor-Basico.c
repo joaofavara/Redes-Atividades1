@@ -16,7 +16,7 @@ char **argv;
    int sockint,s, namelen, client_address_size;
    unsigned short port;
    struct sockaddr_in client, server;
-   char buf[200];
+   char buf[201];
 
    /*
     * Cria um socket UDP (dgram).
@@ -75,7 +75,7 @@ char **argv;
     * Imprime a mensagem recebida, o endere�o IP do cliente
     * e a porta do cliente
     */
-   printf("Recebida a mensagem %s (%lu) do endere�o IP %s da porta %d\n",buf, sizeof(buf), inet_ntoa(client.sin_addr),ntohs(client.sin_port));
+   printf("Recebida a mensagem %s (%lu) do endere�o IP %s da porta %d\n",buf, inet_ntoa(client.sin_addr),ntohs(client.sin_port));
 
    /*
     * Fecha o socket.
